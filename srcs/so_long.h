@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 14:58:33 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/25 15:58:50 by paulmart         ###   ########.fr       */
+/*   Created: 2024/03/20 12:23:59 by paulmart          #+#    #+#             */
+/*   Updated: 2024/03/26 17:20:42 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "so_long.h"
-#include "minilibx-linux/mlx.h"
+#ifndef SO_LONG_H
 
-int	main(void)
+# define SO_LONG_H
+
+# include <string.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include "../lib/mlx/mlx.h"
+# include "../lib/ft_printf/ft_printf.h"
+
+typedef struct s_data_mlx
 {
-	void	*mlx_ptr;
-	void	*mlx_window;
+	void	*ptr;
+	void	*window;
+	void	*sprite[0];
+	int		img_size;
 
-	mlx_ptr = mlx_init();
-	mlx_window = mlx_new_window(mlx_ptr, 600, 600, "TEST");
-	mlx_destroy_display(mlx_ptr);
-	free(mlx_ptr);
-	return (0);
-}
+}			t_mlx;
+
+int		handle_input(int keysym, t_mlx *data);
+void	init_image(t_mlx *data);
+
+#endif
