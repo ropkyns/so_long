@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 12:23:59 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/15 15:26:01 by paulmart         ###   ########.fr       */
+/*   Created: 2023/12/08 18:46:32 by paulmart          #+#    #+#             */
+/*   Updated: 2024/05/15 15:48:32 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# define SO_LONG_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
-# include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
-# include "../lib/mlx/mlx.h"
-# include "../lib/ft_printf/ft_printf.h"
-# include "../lib/gnl/get_next_line.h"
 
-typedef struct s_data_mlx
-{
-	void	*ptr;
-	void	*window;
-	void	*sprite[0];
-	int		img_size;
-
-}			t_mlx;
-
-int		handle_input(int keysym, t_mlx *data);
-void	init_image(t_mlx *data);
+char	*get_next_line(int fd);
+char	*ft_strjoin(char *s1, char const *s2);
+size_t	ft_strlen_gnl(const char *str);
+char	*ft_strdup(const char *s);
+int		ft_strchr( const char *s, int c);
+char	*del_for_next_line(char *stock);
+char	*putline(char *stock);
+char	*get_line(int fd, char *stock);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 #endif

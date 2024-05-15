@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:58:33 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/26 18:14:44 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:58:49 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(void)
 	data.ptr = mlx_init();
 	if (data.ptr == NULL)
 		return (1);
-	data.window = mlx_new_window(data.ptr, 500, 500, "TEST");
+	data.window = mlx_new_window(data.ptr, 500, 500, "so_long");
 	if (data.window == NULL)
 	{
 		mlx_destroy_display(data.ptr);
