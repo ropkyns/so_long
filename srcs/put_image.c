@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:05:48 by paulmart          #+#    #+#             */
-/*   Updated: 2024/03/26 18:26:19 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/05/17 14:45:45 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ void	*open_xpm(t_mlx *data, char *path, int index)
 
 void	init_image(t_mlx *data)
 {
-	data->sprite[0] = open_xpm(data, "grass_sprite.xpm", 0);
+	data->sprite[0] = open_xpm(data, "grass.xpm", 0);
 }

@@ -6,11 +6,11 @@
 #    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 12:52:59 by paulmart          #+#    #+#              #
-#    Updated: 2024/05/15 15:55:33 by paulmart         ###   ########.fr        #
+#    Updated: 2024/05/17 15:39:07 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC			= main.c put_image.c
+SRC			= main.c put_image.c map_init.c
 SRC_GNL	=	= get_next_line.c get_next_line_utils.c
 
 SRCS		= $(addprefix ./srcs/, $(SRC))
@@ -26,9 +26,9 @@ PRINTF_DIR		= lib/ft_printf
 FT_PRINTF		= lib/ft_printf/libftprintf.a
 all:			$(NAME)
 
-$(NAME):		$(OBJS) $(OBJS_GNL)
+$(NAME):		$(OBJS)
 				$(MAKE) -C $(PRINTF_DIR)
-				$(CC) $(OBJS) $(OBJS_GNL) $(CFLAGS) $(FT_PRINTF) -o $(NAME)
+				$(CC) $(OBJS) $(CFLAGS) $(FT_PRINTF) -o $(NAME)
 
 clean:
 				$(RM) $(OBJS) $(OBJS_GNL)
