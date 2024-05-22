@@ -6,40 +6,54 @@
 #    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 12:52:59 by paulmart          #+#    #+#              #
-#    Updated: 2024/05/17 15:39:07 by paulmart         ###   ########.fr        #
+#    Updated: 2024/05/22 15:11:27 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC			= main.c put_image.c map_init.c
-SRC_GNL	=	= get_next_line.c get_next_line_utils.c
+NAME = so_long
 
-SRCS		= $(addprefix ./srcs/, $(SRC))
-SRCS_GNL	= $(addprefix ./lib/, $(SRC_GNL))
+src	=		main.c\
+			put_image.c\
+			map_init.c\
+			get_next_line.c\
+			get_next_line_utils.c\
 
-OBJS			= $(SRCS:.c=.o)
-OBJS_GNL		= $(SRCS_GNL:.c=.o)
+SRCS = $(addprefix ./srcs/, $(src))
 
-CC				= cc
-CFLAGS			= lib/mlx/libmlx_Linux.a lib/mlx/libmlx.a -lX11 -lXext
-NAME			= so_long
-PRINTF_DIR		= lib/ft_printf
-FT_PRINTF		= lib/ft_printf/libftprintf.a
-all:			$(NAME)
+OBJS = $(SRCS:.c=.o)
 
-$(NAME):		$(OBJS)
-				$(MAKE) -C $(PRINTF_DIR)
-				$(CC) $(OBJS) $(CFLAGS) $(FT_PRINTF) -o $(NAME)
+
+MLX_A = libmlx.a
+MLX_DIR = lib/mlx/
+
+PRINTF_A = libftprintf.a
+PRINTF_DIR = lib/ft_printf/
+
+FLAGS = lib/mlx/libmlx.a lib/mlx/libmlx_Linux.a -L. -lXext -L. -lX11
+FT_PRINTF = $(addprefix $(PRINTF_DIR), $(PRINTF_A))
+
+INCLUDE = includes/
+
+.c.o :
+	cc -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o ${<:.c=.o}
+
+all: ${NAME}
+
+$(NAME): ${OBJS}
+	$(MAKE) -C $(PRINTF_DIR)
+	cc ${OBJS} $(FLAGS) $(FT_PRINTF) -o $(NAME)
+	@echo "____________________________________________________________________________________________________________"
 
 clean:
-				$(RM) $(OBJS) $(OBJS_GNL)
-				$(RM) *~
-				$(MAKE) clean -C $(PRINTF_DIR)
+	$(MAKE) clean -C ./lib/ft_printf
+	rm -f $(OBJS)
+	@echo "____________________________________________________________________________________________________________"
 
-fclean:			clean
-				$(RM) $(NAME)
-				$(MAKE) fclean -C $(PRINTF_DIR)
+fclean: clean
+	$(MAKE) fclean -C ./lib/ft_printf
+	rm -f ${NAME}
+	@echo "____________________________________________________________________________________________________________"
 
-re:				fclean
-				$(MAKE) $(NAME)
+re: fclean all
 
-.PHONY: clean fclean re
+.PHONY: all clean fclean re

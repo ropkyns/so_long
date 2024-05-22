@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:23:59 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/17 15:38:28 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/05/22 15:03:27 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <X11/keysym.h>
 # include "../lib/mlx/mlx.h"
 # include "../lib/ft_printf/ft_printf.h"
-# include "../lib/gnl/get_next_line.h"
+# include "get_next_line.h"
 
 typedef struct s_data_mlx
 {
