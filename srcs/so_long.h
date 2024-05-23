@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:23:59 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/22 15:03:27 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:32:09 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <errno.h>
+# include <fcntl.h>
 # include <X11/keysym.h>
 # include "../lib/mlx/mlx.h"
 # include "../lib/ft_printf/ft_printf.h"
@@ -29,11 +31,16 @@ typedef struct s_data_mlx
 	void	*window;
 	void	*sprite[0];
 	int		img_size;
+	char	**map;
+	int		x;
+	int		y;
 
 }			t_mlx;
 
 int		handle_input(int keysym, t_mlx *data);
 void	init_image(t_mlx *data);
-void	map_init(t_mlx data);
+void	map_init_window(t_mlx data);
+void	map_read(t_mlx data, char *map);
+char	**maploc(int count_line, int fd);
 
 #endif
