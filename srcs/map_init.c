@@ -6,22 +6,24 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:30:11 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/23 19:08:18 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:25:31 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**maploc(int count_line, int fd)
+char	**maploc(int count_line, char *map)
 {
 	char	**tab;
 	int		i;
+	int		fd;
 
-	tab = malloc(sizeof(char *) * count_line + 1);
+	fd = open(map, 0);
+	tab = malloc(sizeof(char *) * (count_line + 1));
 	if (tab == NULL)
 		return (NULL);
-	i = 0;
-	while (count_line >= i)
+	i = -1;
+	while (count_line > ++i)
 	{
 		tab[i] = get_next_line(fd);
 		if (tab[i] == NULL)
@@ -33,12 +35,13 @@ char	**maploc(int count_line, int fd)
 			perror("Error\nMemory allocation failed\n");
 			return (NULL);
 		}
-		i++;
 	}
+	tab[i] = NULL;
+	close(fd);
 	return (tab);
 }
 
-void	map_read(t_mlx data, char *map)
+void	map_read(t_mlx *data, char *map)
 {
 	int		fd;
 	char	*line;
@@ -52,37 +55,39 @@ void	map_read(t_mlx data, char *map)
 		return ;
 	}
 	count_line = 0;
-	while (1)
+	line = get_next_line(fd);
+	len = ft_strlen(line);
+	while (line != NULL)
 	{
 		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		len = strlen(line);
 		count_line++;
 		free(line);
 	}
-	data.x = (int)len;
-	data.y = count_line;
-	data.map = maploc(count_line, fd);
+	data->x = (int)len * 64;
+	data->y = count_line * 64;
 	close(fd);
+	data->map = maploc(count_line, map);
+	int		i = -1;
+	while (++i <= 4)
+		ft_printf("%s\n", data->map[i]);
 }
 
 void	map_init_window(t_mlx data)
 {
-	int		y;
-	int		x;
+	int		i;
+	int		j;
 
-	y = 0;
-	x = 0;
-	while (y < 640)
+	i = 0;
+	j = 0;
+	while (i < data.y)
 	{
-		while (x < 640)
+		while (j < data.x)
 		{
 			mlx_put_image_to_window(data.ptr, data.window,
-				data.sprite[0], x, y);
-			x += 64;
+				data.sprite[0], j, i);
+			j += 64;
 		}
-		x = 0;
-		y += 64;
+		j = 0;
+		i += 64;
 	}
 }

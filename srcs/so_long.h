@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:23:59 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/23 18:32:09 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:25:56 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_data_mlx
 int		handle_input(int keysym, t_mlx *data);
 void	init_image(t_mlx *data);
 void	map_init_window(t_mlx data);
-void	map_read(t_mlx data, char *map);
-char	**maploc(int count_line, int fd);
+void	map_read(t_mlx *data, char *map);
+char	**maploc(int count_line, char *map);
 
 #endif
