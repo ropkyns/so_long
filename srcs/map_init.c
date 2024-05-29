@@ -6,7 +6,7 @@
 /*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:30:11 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/29 18:33:47 by palu             ###   ########.fr       */
+/*   Updated: 2024/05/29 19:15:58 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,9 @@ void	map_init_window(t_mlx data)
 			else if (data.map[i][j] == 'E')
 				mlx_put_image_to_window(data.ptr, data.window,
 					data.sprite[6], j * 64, i * 64);
+			else if (data.map[i][j] == 'C')
+				mlx_put_image_to_window(data.ptr, data.window,
+					data.sprite[7], j * 64, i * 64);
 			else if (data.map[i][j] == '0')
 				mlx_put_image_to_window(data.ptr, data.window,
 					data.sprite[0], j * 64, i * 64);

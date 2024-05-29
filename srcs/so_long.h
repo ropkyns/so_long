@@ -6,7 +6,7 @@
 /*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:23:59 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/29 18:26:12 by palu             ###   ########.fr       */
+/*   Updated: 2024/05/29 19:16:04 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_data_mlx
 {
 	void	*ptr;
 	void	*window;
-	void	*sprite[7];
+	void	*sprite[8];
 	int		img_size;
 	char	**map;
 	int		x;

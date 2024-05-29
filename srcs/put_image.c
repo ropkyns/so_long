@@ -6,7 +6,7 @@
 /*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:05:48 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/29 18:27:44 by palu             ###   ########.fr       */
+/*   Updated: 2024/05/29 19:16:27 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ void	init_image(t_mlx *data)
 	data->sprite[4] = open_xpm(data, "./sprites/catl.xpm", 0);
 	data->sprite[5] = open_xpm(data, "./sprites/catr.xpm", 0);
 	data->sprite[6] = open_xpm(data, "./sprites/portal.xpm", 0);
+	data->sprite[7] = open_xpm(data, "./sprites/peanut.xpm", 0);
 }
