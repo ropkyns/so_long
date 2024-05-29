@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:58:33 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/27 17:29:37 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:01:09 by palu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,21 @@ int	main(int argc, char **argv)
 	if (data.ptr == NULL)
 		return (1);
 	map_read(&data, argv[1]);
-	ft_printf("%s\n", data.map[1]);
 	if (data.map == NULL)
 	{
 		free(data.ptr);
 		exit(1);
 	}
-	data.window = mlx_new_window(data.ptr, data.x, data.y, "so_long");
+	data.window = mlx_new_window(data.ptr, data.x * 64, data.y * 64, "Cassiopee picks up nuts");
 	if (data.window == NULL)
 	{
 		mlx_destroy_display(data.ptr);
 		free(data.ptr);
 		return (1);
 	}
-	ft_printf("apres cas d'erreur!\n");
 	mlx_key_hook(data.window, handle_input, &data);
 	init_image(&data);
 	map_init_window(data);
 	mlx_loop(data.ptr);
-	ft_printf("fin!\n");
 	return (0);
 }

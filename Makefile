@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
+#    By: palu <palu@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 12:52:59 by paulmart          #+#    #+#              #
-#    Updated: 2024/05/23 12:31:46 by paulmart         ###   ########.fr        #
+#    Updated: 2024/05/29 11:01:46 by palu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ all: ${NAME}
 
 $(NAME): ${OBJS}
 	$(MAKE) -C $(PRINTF_DIR)
+	$(MAKE) -C $(MLX_DIR)
 	cc ${OBJS} $(FLAGS) $(FT_PRINTF) -o $(NAME)
 
 clean:
