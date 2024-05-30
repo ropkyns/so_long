@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:58:33 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/29 18:01:09 by palu             ###   ########.fr       */
+/*   Updated: 2024/05/30 15:35:41 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,33 @@
 
 int	handle_input(int keysym, t_mlx *data)
 {
+	data->nb_move++;
 	if (keysym == XK_Escape)
 	{
-		ft_printf("\rThe %d key (ESC) has been pressed", keysym);
+		ft_printf("\nThe %d key (ESC) has been pressed", keysym);
 		mlx_destroy_window(data->ptr, data->window);
 		mlx_destroy_display(data->ptr);
 		free(data->ptr);
 		exit(1);
 	}
-	ft_printf("\rThe %d key has been pressed", keysym);
+	ft_printf("\rMovement count : %d", data->nb_move);
 	return (0);
 }
 
 void	initialised(t_mlx *data)
 {
+	int	i;
+
+	i = -1;
 	data->ptr = NULL;
 	data->window = NULL;
-	data->sprite[0] = NULL;
+	while (++i > 8)
+		data->sprite[i] = NULL;
 	data->img_size = 0;
 	data->map = NULL;
 	data->x = 0;
 	data->y = 0;
+	data->nb_move = -1;
 }
 
 int	main(int argc, char **argv)
@@ -53,7 +59,7 @@ int	main(int argc, char **argv)
 		free(data.ptr);
 		exit(1);
 	}
-	data.window = mlx_new_window(data.ptr, data.x * 64, data.y * 64, "Cassiopee picks up nuts");
+	data.window = mlx_new_window(data.ptr, data.x, data.y, "Cassiopee picks up nuts");
 	if (data.window == NULL)
 	{
 		mlx_destroy_display(data.ptr);
@@ -61,7 +67,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	mlx_key_hook(data.window, handle_input, &data);
-	init_image(&data);
 	map_init_window(data);
 	mlx_loop(data.ptr);
 	return (0);

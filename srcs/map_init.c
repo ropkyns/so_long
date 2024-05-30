@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:30:11 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/29 19:15:58 by palu             ###   ########.fr       */
+/*   Updated: 2024/05/30 15:14:54 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,36 @@ void	map_read(t_mlx *data, char *map)
 	}
 	count_line = 0;
 	line = get_next_line(fd);
-	len = ft_strlen(line);
+	len = ft_strlen(line) - 1;
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
 		count_line++;
 		free(line);
 	}
-	data->x = (int)len - 1;
-	data->y = count_line;
+	data->x = (int)len * 64;
+	data->y = count_line * 64;
 	close(fd);
 	data->map = maploc(count_line, map);
+}
+
+void	put_image_on_map(t_mlx data, int i, int j)
+{
+	if (data.map[i][j] == '1')
+		mlx_put_image_to_window(data.ptr, data.window,
+			data.sprite[1], j * 64, i * 64);
+	else if (data.map[i][j] == 'P')
+		mlx_put_image_to_window(data.ptr, data.window,
+			data.sprite[3], j * 64, i * 64);
+	else if (data.map[i][j] == 'E')
+		mlx_put_image_to_window(data.ptr, data.window,
+			data.sprite[6], j * 64, i * 64);
+	else if (data.map[i][j] == 'C')
+		mlx_put_image_to_window(data.ptr, data.window,
+			data.sprite[7], j * 64, i * 64);
+	else if (data.map[i][j] == '0')
+		mlx_put_image_to_window(data.ptr, data.window,
+			data.sprite[0], j * 64, i * 64);
 }
 
 void	map_init_window(t_mlx data)
@@ -76,27 +95,11 @@ void	map_init_window(t_mlx data)
 
 	i = -1;
 	j = -1;
-	
-	while (++i < data.y)
+	init_image(&data);
+	while (++i < (data.y / 64))
 	{
-		while (++j < data.x)
-		{
-			if (data.map[i][j] == '1')
-				mlx_put_image_to_window(data.ptr, data.window,
-					data.sprite[1], j * 64, i * 64);
-			else if (data.map[i][j] == 'P')
-				mlx_put_image_to_window(data.ptr, data.window,
-					data.sprite[3], j * 64, i * 64);
-			else if (data.map[i][j] == 'E')
-				mlx_put_image_to_window(data.ptr, data.window,
-					data.sprite[6], j * 64, i * 64);
-			else if (data.map[i][j] == 'C')
-				mlx_put_image_to_window(data.ptr, data.window,
-					data.sprite[7], j * 64, i * 64);
-			else if (data.map[i][j] == '0')
-				mlx_put_image_to_window(data.ptr, data.window,
-					data.sprite[0], j * 64, i * 64);
-		}
+		while (++j < (data.x / 64))
+			put_image_on_map(data, i, j);
 		j = -1;
 	}
 }

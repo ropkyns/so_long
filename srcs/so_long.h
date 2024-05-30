@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palu <palu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:23:59 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/29 19:16:04 by palu             ###   ########.fr       */
+/*   Updated: 2024/05/30 15:32:31 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_data_mlx
 	char	**map;
 	int		x;
 	int		y;
-
+	int		nb_move;
 }			t_mlx;
 
 int		handle_input(int keysym, t_mlx *data);
@@ -42,5 +42,7 @@ void	init_image(t_mlx *data);
 void	map_init_window(t_mlx data);
 void	map_read(t_mlx *data, char *map);
 char	**maploc(int count_line, char *map);
+void	initialised(t_mlx *data);
+void	put_image_on_map(t_mlx data, int i, int j);
 
 #endif
