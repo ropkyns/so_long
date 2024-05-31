@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: palu <palu@student.42.fr>                  +#+  +:+       +#+         #
+#    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 12:52:59 by paulmart          #+#    #+#              #
-#    Updated: 2024/05/29 11:01:46 by palu             ###   ########.fr        #
+#    Updated: 2024/05/31 14:22:00 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = so_long
 src	=		main.c\
 			put_image.c\
 			map_init.c\
+			movment.c\
 			get_next_line.c\
 			get_next_line_utils.c\
 
