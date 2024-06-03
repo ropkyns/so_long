@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:58:33 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/31 16:23:16 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/03 14:04:26 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int	handle_input(int keysym, t_mlx *data)
 {
 	if (keysym == XK_Escape)
 		free_all(data);
-	else if (keysym == XK_a || keysym == XK_A || keysym == XK_Right)
-		move(data, 'R');
+	else if (keysym == XK_a || keysym == XK_A || keysym == XK_Left)
+		move(data, 'L');
 	else if (keysym == XK_w || keysym == XK_W || keysym == XK_Up)
 		move(data, 'U');
-	else if (keysym == XK_s || keysym == XK_S|| keysym == XK_Down)
+	else if (keysym == XK_s || keysym == XK_S || keysym == XK_Down)
 		move(data, 'D');
 	else if (keysym == XK_d || keysym == XK_D || keysym == XK_Right)
 		move(data, 'R');
@@ -53,7 +53,7 @@ void	initialised(t_mlx *data, char *argv)
 			"Cassiopee's game");
 	while (++i > 8)
 		data->sprite[i] = NULL;
-	data->collec = 0;
+	data->coin = 0;
 	set_position(data);
 	data->nb_move = 0;
 	map_init_window(data);

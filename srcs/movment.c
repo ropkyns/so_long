@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:24:34 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/31 16:25:07 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/03 14:59:53 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,21 @@ void	set_position(t_mlx *data)
 			}
 			else if (data->map[i][j] == 'P')
 			{
-				data->start_x = j;
-				data->start_y = i;
 				data->player_x = j;
 				data->player_y = i;
 			}
 			else if (data->map[i][j] == 'C')
-				data->collec++;
+				data->coin++;
 		}
 	}
 }
 
 void	player_actualisation(t_mlx *data)
 {
-	if (data->map[data->next_x][data->next_y] == 'C')
-		data->collec--;
-	data->map[data->next_x][data->next_y] = 'S';
-	data->map[data->player_x][data->player_y] = '0';
+	if (data->map[data->next_y][data->next_x] == 'C')
+		data->coin--;
+	data->map[data->next_y][data->next_x] = 'P';
+	data->map[data->player_y][data->player_x] = '0';
 	mlx_put_image_to_window(data->ptr, data->window,
 		data->sprite[0], data->player_x * 64, data->player_y * 64);
 	mlx_put_image_to_window(data->ptr, data->window,
@@ -72,11 +70,17 @@ void	next_move(t_mlx *data, char c)
 void	move(t_mlx *data, char move)
 {
 	next_move(data, move);
-	if (!(data->next_x > data->x || data->next_x < 0
-			|| data->next_y > data->y || data->next_y < 0)
-		&& data->map[data->next_y][data->next_x] != '1')
+	if (!(data->next_x > (data->x - 1) / 64 || data->next_x < 0
+			|| data->next_y > (data->y - 1) / 64 || data->next_y < 0)
+		&& (data->map[data->next_y][data->next_x] != '1'
+		|| (data->map[data->next_y][data->next_x] == 'E' && data->coin == 0)))
 	{
-		data->nb_move++;
-		player_actualisation(data);
+		if (data->map[data->next_y][data->next_x] == 'E' && data->coin == 0)
+			free_all(data);
+		else if (data->map[data->next_y][data->next_x] != 'E')
+		{
+			data->nb_move++;
+			player_actualisation(data);
+		}
 	}
 }

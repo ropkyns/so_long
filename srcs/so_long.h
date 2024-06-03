@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:23:59 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/31 16:17:59 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/03 14:03:38 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ typedef struct s_data_mlx
 
 	int		player_x;
 	int		player_y;
-	int		start_x;
-	int		start_y;
 	int		end_x;
 	int		end_y;
-	int		collec;
+	int		coin;
 	int		next_x;
 	int		next_y;
 
