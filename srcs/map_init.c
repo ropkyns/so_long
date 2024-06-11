@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:30:11 by paulmart          #+#    #+#             */
-/*   Updated: 2024/05/31 15:23:37 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:40:16 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void	map_read(t_mlx *data, char *map)
 	len = ft_strlen(line) - 1;
 	while (line != NULL)
 	{
+		free(line);
 		line = get_next_line(fd);
 		count_line++;
-		free(line);
 	}
 	free(line);
 	data->x = (int)len * 64;

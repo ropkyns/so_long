@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:58:33 by paulmart          #+#    #+#             */
-/*   Updated: 2024/06/03 14:04:26 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:34:36 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	free_all(t_mlx *data)
 	int		i;
 
 	i = -1;
-	while (data->sprite[++i])
+	while (++i <= 7)
 		mlx_destroy_image(data->ptr, data->sprite[i]);
 	mlx_destroy_window(data->ptr, data->window);
 	mlx_destroy_display(data->ptr);

@@ -6,7 +6,7 @@
 #    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 12:52:59 by paulmart          #+#    #+#              #
-#    Updated: 2024/05/31 14:22:00 by paulmart         ###   ########.fr        #
+#    Updated: 2024/06/11 13:50:59 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,6 @@ all: ${NAME}
 
 $(NAME): ${OBJS}
 	$(MAKE) -C $(PRINTF_DIR)
-	$(MAKE) -C $(MLX_DIR)
 	cc ${OBJS} $(FLAGS) $(FT_PRINTF) -o $(NAME)
 
 clean:
