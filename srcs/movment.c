@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:24:34 by paulmart          #+#    #+#             */
-/*   Updated: 2024/06/11 14:28:52 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:11:54 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	move(t_mlx *data, char move)
 	{
 		if (data->map[data->next_y][data->next_x] == 'E' && data->coin == 0)
 		{
+			ft_printf("\rMovement count : %d", data->nb_move + 1);
 			ft_printf("\nYOU WON GG !!!\n");
 			free_all(data);
 		}
