@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:30:11 by paulmart          #+#    #+#             */
-/*   Updated: 2024/06/11 14:40:16 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/12 11:43:18 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,11 @@ void	put_image_on_map(t_mlx *data, int i, int j)
 	else if (data->map[i][j] == '0')
 		mlx_put_image_to_window(data->ptr, data->window,
 			data->sprite[0], j * 64, i * 64);
+	else
+	{
+		perror("Error\nMap invalid\n");
+		free_all(data);
+	}
 }
 
 void	map_init_window(t_mlx *data)
