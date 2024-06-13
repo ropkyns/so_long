@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:23:59 by paulmart          #+#    #+#             */
-/*   Updated: 2024/06/03 14:03:38 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/13 18:19:42 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_data_mlx
 	int		coin;
 	int		next_x;
 	int		next_y;
+	int		coin_fill;
 
 }			t_mlx;
 
@@ -57,5 +58,7 @@ int		free_all(t_mlx *data);
 void	free_tab(char **tab);
 void	set_position(t_mlx *data);
 void	move(t_mlx *data, char move);
+int		map_check(t_mlx *data);
+int		flood_fill(t_mlx *data);
 
 #endif

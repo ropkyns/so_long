@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:30:11 by paulmart          #+#    #+#             */
-/*   Updated: 2024/06/12 11:43:18 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/13 19:05:19 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	free_tab(char **tab)
 {
 	int	i;
 
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
+	i = -1;
+	while (tab[++i])
+		free(tab[i]);
 	free(tab);
 }
 
@@ -96,7 +96,7 @@ void	put_image_on_map(t_mlx *data, int i, int j)
 			data->sprite[0], j * 64, i * 64);
 	else
 	{
-		perror("Error\nMap invalid\n");
+		perror("Error\nInvalid map\n");
 		free_all(data);
 	}
 }

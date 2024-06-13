@@ -6,7 +6,7 @@
 #    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 12:52:59 by paulmart          #+#    #+#              #
-#    Updated: 2024/06/11 13:50:59 by paulmart         ###   ########.fr        #
+#    Updated: 2024/06/13 16:14:18 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ src	=		main.c\
 			put_image.c\
 			map_init.c\
 			movment.c\
+			check_map.c\
+			flood_fill.c\
 			get_next_line.c\
 			get_next_line_utils.c\
 

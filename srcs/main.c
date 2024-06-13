@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:58:33 by paulmart          #+#    #+#             */
-/*   Updated: 2024/06/12 11:58:44 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/13 18:07:00 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	main(int argc, char **argv)
 		exit(1);
 	}
 	initialised(&data, argv[1]);
-	if (!data.ptr || !data.window || !data.map)
+	if (!data.ptr || !data.window || !data.map || map_check(&data))
 		free_all(&data);
 	mlx_hook(data.window, 2, 1L << 0, handle_input, &data);
 	mlx_hook(data.window, 17, 0, free_all, &data);
