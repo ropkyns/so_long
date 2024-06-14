@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:27:09 by paulmart          #+#    #+#             */
-/*   Updated: 2024/06/13 19:00:41 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/14 10:29:35 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	**dup_map(t_mlx *data, char **map)
 	char		**dup;
 	int			i;
 
-	dup = malloc(sizeof(char *) * (data->y / 64));
+	dup = malloc(sizeof(char *) * ((data->y / 64) + 1));
 	if (!dup)
 		return (NULL);
 	i = -1;
@@ -30,6 +30,7 @@ char	**dup_map(t_mlx *data, char **map)
 			return (NULL);
 		}
 	}
+	dup[i] = NULL;
 	return (dup);
 }
 
