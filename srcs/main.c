@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:58:33 by paulmart          #+#    #+#             */
-/*   Updated: 2024/06/13 18:07:00 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:37:24 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	initialised(t_mlx *data, char *argv)
 	data->coin = 0;
 	set_position(data);
 	data->nb_move = 0;
+	data->img_size = 64;
 	map_init_window(data);
 }
 
@@ -88,7 +89,8 @@ int	main(int argc, char **argv)
 		exit(1);
 	}
 	initialised(&data, argv[1]);
-	if (!data.ptr || !data.window || !data.map || map_check(&data))
+	if (!data.ptr || !data.window || !data.map || map_check(&data) 
+		|| data.x > 1920 || data.y > 1080)
 		free_all(&data);
 	mlx_hook(data.window, 2, 1L << 0, handle_input, &data);
 	mlx_hook(data.window, 17, 0, free_all, &data);
