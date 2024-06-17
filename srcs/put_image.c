@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:05:48 by paulmart          #+#    #+#             */
-/*   Updated: 2024/06/14 16:04:04 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/17 13:09:10 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	error_xpm(t_mlx *data, int i)
 
 	j = -1;
 	while (++j < i)
-		mlx_destroy_image(data->ptr, data->sprite[i]);
+		mlx_destroy_image(data->ptr, data->sprite[j]);
 	mlx_destroy_window(data->ptr, data->window);
 	mlx_destroy_display(data->ptr);
 	free(data->ptr);
