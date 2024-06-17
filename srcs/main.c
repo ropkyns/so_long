@@ -89,7 +89,7 @@ int	main(int argc, char **argv)
 		exit(1);
 	}
 	initialised(&data, argv[1]);
-	if (!data.ptr || !data.window || !data.map || map_check(&data) 
+	if (!data.ptr || !data.window || !data.map || map_check(&data)
 		|| data.x > 1920 || data.y > 1080)
 		free_all(&data);
 	mlx_hook(data.window, 2, 1L << 0, handle_input, &data);
