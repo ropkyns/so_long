@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:58:33 by paulmart          #+#    #+#             */
-/*   Updated: 2024/06/14 15:37:24 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/19 10:51:37 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,20 @@ int	free_all(t_mlx *data)
 	int		i;
 
 	i = -1;
-	while (++i <= 7)
-		mlx_destroy_image(data->ptr, data->sprite[i]);
-	mlx_destroy_window(data->ptr, data->window);
-	mlx_destroy_display(data->ptr);
-	free(data->ptr);
-	free_tab(data->map);
+	if (data->sprite[0])
+	{
+		while (++i <= 7)
+			mlx_destroy_image(data->ptr, data->sprite[i]);
+	}
+	if (data->window)
+		mlx_destroy_window(data->ptr, data->window);
+	if (data->ptr)
+	{
+		mlx_destroy_display(data->ptr);
+		free(data->ptr);
+	}
+	if (data->map)
+		free_tab(data->map);
 	exit (0);
 }
 

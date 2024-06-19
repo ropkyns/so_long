@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:30:11 by paulmart          #+#    #+#             */
-/*   Updated: 2024/06/13 19:05:19 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/19 10:52:58 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,7 @@ void	map_read(t_mlx *data, char *map)
 
 	fd = open(map, 0);
 	if (fd == -1)
-	{
-		perror("Error\nCan't open the file\n");
-		free_all(data);
-	}
+		free_ptr(data);
 	count_line = 0;
 	line = get_next_line(fd);
 	len = ft_strlen(line) - 1;

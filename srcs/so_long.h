@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:23:59 by paulmart          #+#    #+#             */
-/*   Updated: 2024/06/13 18:19:42 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/19 10:55:07 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void	set_position(t_mlx *data);
 void	move(t_mlx *data, char move);
 int		map_check(t_mlx *data);
 int		flood_fill(t_mlx *data);
+void	free_ptr(t_mlx *data);
 
 #endif

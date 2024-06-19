@@ -6,11 +6,18 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:05:48 by paulmart          #+#    #+#             */
-/*   Updated: 2024/06/17 13:09:10 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/19 10:54:51 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	free_ptr(t_mlx *data)
+{
+	mlx_destroy_display(data->ptr);
+	free(data->ptr);
+	exit (1);
+}
 
 void	error_xpm(t_mlx *data, int i)
 {
