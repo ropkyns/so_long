@@ -6,14 +6,14 @@
 #    By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/02 16:36:40 by ropkyns           #+#    #+#              #
-#    Updated: 2024/01/09 17:19:05 by paulmart         ###   ########.fr        #
+#    Updated: 2024/06/20 14:01:11 by paulmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC				= ft_printf.c ft_utils.c ft_printf_alpha.c ft_printf_digit.c ft_printf_hexa.c
 SRCS			= ${SRC}
 OBJS			= ${SRCS:.c=.o}
-CC				= gcc
+CC				= cc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror
 
