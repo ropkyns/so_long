@@ -6,7 +6,7 @@
 /*   By: paulmart <paulmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:10:53 by paulmart          #+#    #+#             */
-/*   Updated: 2024/06/20 13:43:07 by paulmart         ###   ########.fr       */
+/*   Updated: 2024/06/21 13:50:02 by paulmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	line_check(t_mlx *data, char **map, int i, int len)
 	int	j;
 
 	j = -1;
-	if (ft_strlen(map[i]) != len - 1 && map[i][len - 2] != '1')
+	ft_printf("%d\n %c", len, map[i][len - 2]);
+	if (ft_strlen(map[i]) != len - 1 || map[i][len - 2] != '1')
 		return (1);
 	while (++j < data->x / 64)
 	{
@@ -46,6 +47,7 @@ int	size_check(t_mlx *data, char **map)
 			|| map[i][len - 2] != '1')
 			return (1);
 	}
+	ft_printf("%d\n", i);
 	if (line_check(data, map, i, len) == 1)
 		return (1);
 	return (0);
